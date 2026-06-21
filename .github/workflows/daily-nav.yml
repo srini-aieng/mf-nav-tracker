@@ -1,0 +1,26 @@
+name: Daily NAV Update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-nav:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Initialize Database
+        run: python init_db.py
+
+      - name: Load NAV Data
+        run: python load_nav.py
