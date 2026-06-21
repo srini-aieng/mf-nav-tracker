@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 conn = sqlite3.connect("data/nav.db")
 
@@ -18,9 +19,12 @@ rows = cursor.fetchall()
 
 conn.close()
 
+generated_time = datetime.now().strftime("%d-%b-%Y %H:%M:%S")
+
 html = """
 <!DOCTYPE html>
 <html>
+<p>Last Updated: {generated_time}</p>
 <head>
     <title>Mutual Fund NAV Tracker</title>
 </head>
