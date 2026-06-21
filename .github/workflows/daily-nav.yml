@@ -24,3 +24,12 @@ jobs:
 
       - name: Load NAV Data
         run: python load_nav.py
+
+      - name: Generate HTML Report
+        run: python generate_report.py
+        
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nav-report
+          path: reports/index.html

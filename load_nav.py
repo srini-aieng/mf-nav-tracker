@@ -22,7 +22,7 @@ for scheme_code in funds:
     nav_date = data["data"][0]["date"]
 
     cursor.execute("""
-        INSERT INTO nav_history
+        INSERT OR IGNORE INTO nav_history
         (
             scheme_code,
             scheme_name,
@@ -37,7 +37,10 @@ for scheme_code in funds:
         nav_date
     ))
 
-    print(f"Inserted: {scheme_name}")
+    if cursor.rowcount == 1:
+        print(f"Inserted: {scheme_name}")
+    else:
+        print(f"Skipped : {scheme_name} (already exists)")
 
 conn.commit()
 conn.close()
