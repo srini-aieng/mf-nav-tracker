@@ -21,7 +21,7 @@ conn.close()
 
 generated_time = datetime.now().strftime("%d-%b-%Y %H:%M:%S")
 
-html = """
+html = f"""
 <!DOCTYPE html>
 <html>
 <p>Last Updated: {generated_time}</p>
