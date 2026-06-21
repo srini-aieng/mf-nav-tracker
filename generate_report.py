@@ -51,7 +51,7 @@ html += """
 </html>
 """
 
-with open("reports/index.html", "w", encoding="utf-8") as file:
+with open("docs/index.html", "w", encoding="utf-8") as file:
     file.write(html)
 
 print("HTML report generated")
