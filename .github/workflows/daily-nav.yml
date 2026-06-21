@@ -27,9 +27,20 @@ jobs:
 
       - name: Generate HTML Report
         run: python generate_report.py
-        
+
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
           name: nav-report
           path: reports/index.html
+      
+      - name: Commit and Push Report
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add docs/index.html
+
+          git commit -m "Auto update NAV report" || echo "No changes to commit"
+
+          git push
