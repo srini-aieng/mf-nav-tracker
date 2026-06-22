@@ -21,9 +21,12 @@ conn.close()
 
 generated_time = datetime.now().strftime("%d-%b-%Y %H:%M:%S")
 
+total_records = len(rows)
+
 html = f"""
 <!DOCTYPE html>
 <html>
+<p>Total Funds: {total_records}</p>
 <p>Last Updated: {generated_time}</p>
 <head>
     <title>Mutual Fund NAV Tracker</title>

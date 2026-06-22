@@ -1,16 +1,21 @@
 import requests
 import sqlite3
 
-funds = [
-    "120503",
-    "118989",
-    "122639"
-]
+conn = sqlite3.connect("data/nav.db")
+
+cursor = conn.cursor()
+
+cursor.execute("""
+    SELECT scheme_code
+    FROM fund_master
+""")
+
+funds = cursor.fetchall()
 
 conn = sqlite3.connect("data/nav.db")
 cursor = conn.cursor()
 
-for scheme_code in funds:
+for (scheme_code,) in funds:
 
     url = f"https://api.mfapi.in/mf/{scheme_code}"
 

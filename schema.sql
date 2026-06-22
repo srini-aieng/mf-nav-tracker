@@ -8,3 +8,9 @@ CREATE TABLE IF NOT EXISTS nav_history
 
     UNIQUE (scheme_code, nav_date)
 );
+
+CREATE TABLE IF NOT EXISTS fund_master
+(
+    scheme_code TEXT PRIMARY KEY,
+    scheme_name TEXT NOT NULL
+);
